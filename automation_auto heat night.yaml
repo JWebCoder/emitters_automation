@@ -1,0 +1,32 @@
+alias: Auto Heat Nigth
+description: ""
+trigger:
+  - platform: time_pattern
+    minutes: /20
+condition:
+  - condition: time
+    after: "19:09:00"
+    before: "08:21:00"
+action:
+  - service: script.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: script.stop_heat_if
+  - service: script.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: script.1704977796124
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - service: automation.trigger
+    metadata: {}
+    data:
+      skip_condition: true
+    target:
+      entity_id: automation.reset_heat_counter
+mode: single
