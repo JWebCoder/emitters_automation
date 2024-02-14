@@ -1,0 +1,56 @@
+alias: Stop energy consumption
+description: ""
+trigger:
+  - platform: numeric_state
+    entity_id:
+      - sensor.energia_amp
+    above: 30
+condition: []
+action:
+  - service: script.stop_heat
+    data: {}
+  - service: counter.reset
+    metadata: {}
+    data: {}
+    target:
+      entity_id: counter.heat_counter
+  - service: input_number.decrement
+    target:
+      entity_id:
+        - input_number.quantidade_maxima_emissores
+    data: {}
+  - if:
+      - condition: state
+        entity_id: automation.auto_heat
+        state: "on"
+    then:
+      - service: automation.trigger
+        metadata: {}
+        data:
+          skip_condition: false
+        target:
+          entity_id: automation.auto_heat
+    alias: Auto heat day is On
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - alias: Auto heat night is On
+    if:
+      - condition: state
+        entity_id: automation.auto_heat_nigth
+        state: "on"
+    then:
+      - service: automation.trigger
+        metadata: {}
+        data:
+          skip_condition: false
+        target:
+          entity_id: automation.auto_heat_nigth
+  - service: notify.notify
+    metadata: {}
+    data:
+      message: Turning off heaters, reducing heat counter
+      title: Energy consumption limit reached
+mode: single
