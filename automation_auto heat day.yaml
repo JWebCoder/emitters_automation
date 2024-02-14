@@ -1,0 +1,37 @@
+alias: Auto heat day
+description: ""
+trigger:
+  - platform: time_pattern
+    minutes: /10
+condition:
+  - condition: time
+    after: "08:29:00"
+    before: "19:00:00"
+action:
+  - service: script.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: script.stop_heat_if
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - service: script.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: script.turn_on_heat
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - service: automation.trigger
+    metadata: {}
+    data:
+      skip_condition: true
+    target:
+      entity_id: automation.reset_heat_counter
+mode: single
