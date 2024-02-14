@@ -1,0 +1,53 @@
+alias: Increase heater counter when turned on
+description: ""
+trigger:
+  - platform: device
+    device_id: 7c5feb41f85090be390bb3ece522b57f
+    domain: climate
+    entity_id: d34c557786d365c0033aaceb3ed619b8
+    type: hvac_mode_changed
+    to: heat
+  - platform: device
+    device_id: 2a67c0b35fb98336e09951ac1053481b
+    domain: climate
+    entity_id: 98dc3fe96371a474ca8d7d9d0609dc9e
+    type: hvac_mode_changed
+    to: heat
+  - platform: device
+    device_id: 6c68a4f013da30efb253415be5f2acfe
+    domain: climate
+    entity_id: 59f9bae04395e518d0476f9a747f9931
+    type: hvac_mode_changed
+    to: heat
+  - platform: device
+    device_id: 567f16b4e0057df69a94fadcbd32b3b6
+    domain: climate
+    entity_id: 76f8c873ccd21160de2be53e8b1c15e2
+    type: hvac_mode_changed
+    to: heat
+  - platform: device
+    device_id: fe8cdf1aea02ca5d17133c39e254c089
+    domain: climate
+    entity_id: bdea5fea2b52694e3efdd227175fec5b
+    type: hvac_mode_changed
+    to: heat
+  - platform: device
+    device_id: 3598b449ce6d55a6091cca302b993ffb
+    domain: climate
+    entity_id: 800ae87e026f1112829e4293bfded5af
+    type: hvac_mode_changed
+    to: heat
+  - platform: device
+    device_id: f65e14302c845e38aa7c515d02debdb8
+    domain: climate
+    entity_id: 0d725962e35c8a60c124cb51c153a3ed
+    type: hvac_mode_changed
+    to: heat
+condition: []
+action:
+  - service: counter.increment
+    metadata: {}
+    data: {}
+    target:
+      entity_id: counter.heat_counter
+mode: single
