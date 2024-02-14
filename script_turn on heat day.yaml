@@ -1,0 +1,103 @@
+alias: Turn on Heat Day
+sequence:
+  - alias: Stop if Amp above 22
+    if:
+      - condition: numeric_state
+        entity_id: sensor.energia_amp
+        above: 22
+    then:
+      - stop: ""
+  - alias: Turn on Sala
+    if:
+      - condition: and
+        conditions:
+          - condition: numeric_state
+            entity_id: climate.emisor_termico_wifi_sala_2
+            attribute: current_temperature
+            below: input_number.temperatura_minima
+          - condition: device
+            device_id: 7c5feb41f85090be390bb3ece522b57f
+            domain: climate
+            entity_id: d34c557786d365c0033aaceb3ed619b8
+            type: is_hvac_mode
+            hvac_mode: "off"
+          - condition: numeric_state
+            entity_id: counter.heat_counter
+            below: input_number.quantidade_maxima_emissores
+    then:
+      - device_id: 7c5feb41f85090be390bb3ece522b57f
+        domain: climate
+        entity_id: d34c557786d365c0033aaceb3ed619b8
+        type: set_hvac_mode
+        hvac_mode: heat
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - alias: Stop if Amp above 22
+    if:
+      - condition: numeric_state
+        entity_id: sensor.energia_amp
+        above: 22
+    then:
+      - stop: ""
+  - alias: Turn on Escritorio
+    if:
+      - condition: and
+        conditions:
+          - condition: numeric_state
+            entity_id: climate.emisor_termico_wifi_escritorio_2
+            attribute: current_temperature
+            below: input_number.temperatura_minima
+          - condition: device
+            device_id: 2a67c0b35fb98336e09951ac1053481b
+            domain: climate
+            entity_id: 98dc3fe96371a474ca8d7d9d0609dc9e
+            type: is_hvac_mode
+            hvac_mode: "off"
+          - condition: numeric_state
+            entity_id: counter.heat_counter
+            below: input_number.quantidade_maxima_emissores
+    then:
+      - device_id: 2a67c0b35fb98336e09951ac1053481b
+        domain: climate
+        entity_id: 98dc3fe96371a474ca8d7d9d0609dc9e
+        type: set_hvac_mode
+        hvac_mode: heat
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - alias: Stop if Amp above 22
+    if:
+      - condition: numeric_state
+        entity_id: sensor.energia_amp
+        above: 22
+    then:
+      - stop: ""
+  - alias: Turn on Brinquedos
+    if:
+      - condition: and
+        conditions:
+          - condition: numeric_state
+            entity_id: climate.emisor_termico_wifi_brinquedos_2
+            attribute: current_temperature
+            below: input_number.temperatura_minima
+          - condition: device
+            device_id: 6c68a4f013da30efb253415be5f2acfe
+            domain: climate
+            entity_id: 59f9bae04395e518d0476f9a747f9931
+            type: is_hvac_mode
+            hvac_mode: "off"
+          - condition: numeric_state
+            entity_id: counter.heat_counter
+            below: input_number.quantidade_maxima_emissores
+    then:
+      - device_id: 6c68a4f013da30efb253415be5f2acfe
+        domain: climate
+        entity_id: 59f9bae04395e518d0476f9a747f9931
+        type: set_hvac_mode
+        hvac_mode: heat
+mode: single
