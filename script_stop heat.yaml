@@ -7,9 +7,9 @@ sequence:
         - brinquedos
         - escritorio
         - sala
-        - quarto_artur
-        - quarto_alice
-        - quarto_gaspar
+        - quarto_ar
+        - quarto_al
+        - quarto_ga
   - if:
       - condition: state
         entity_id: input_boolean.lock_baby_heat
