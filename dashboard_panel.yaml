@@ -1,0 +1,34 @@
+type: entities
+entities:
+  - entity: climate.emisor_termico_wifi_sala_2
+    name: Emissor térmico sala
+    icon: mdi:radiator
+  - entity: climate.emisor_termico_wifi_brinquedos_2
+    name: Emissor térmico brinquedos
+    icon: mdi:radiator
+  - entity: climate.emisor_termico_wifi_escritorio_2
+    name: Emissor térmico escritório
+    icon: mdi:radiator
+  - entity: climate.emisor_termico_wifi_ar_2
+    name: Emissor térmico Ar
+    icon: mdi:radiator
+  - entity: climate.emisor_termico_wifi_al
+    name: Emissor térmico Al
+    icon: mdi:radiator
+  - entity: climate.emisor_termico_wifi_ga
+    name: Emissor térmico Ga
+    icon: mdi:radiator
+  - entity: climate.emisor_termico_wifi_pais_2
+    name: Emissor térmico pais
+    icon: mdi:radiator
+  - entity: counter.heat_counter
+    name: Emissores ligados
+    icon: ''
+  - entity: input_number.quantidade_maxima_emissores
+    name: Max Emissores
+    icon: mdi:counter
+  - entity: input_boolean.lock_baby_heat
+  - entity: input_number.temperatura_minima
+  - entity: input_number.temperatura_maxima
+title: Emissores térmicos
+show_header_toggle: false
